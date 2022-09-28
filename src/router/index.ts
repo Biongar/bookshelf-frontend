@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import _example_router from './part_routers/_example_router'
+import bookshelfRouter from './part_routers/bookshelfRouter'
 import { useUserStore } from '@/stores/users'
 
 const router = createRouter({
@@ -43,7 +43,7 @@ const router = createRouter({
       component: () => import('@/views/dashboard/DashboardPage.vue'),
     },
 
-    ..._example_router,
+    ...bookshelfRouter,
 
     // Страницы ошибок
     {

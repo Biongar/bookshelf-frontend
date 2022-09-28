@@ -2,7 +2,7 @@
   <nav class="sidebar js-sidebar" :class="{ collapsed: !store.getVisibleSidebar }">
     <div class="sidebar-content">
       <router-link class="sidebar-brand" :to="{ name: 'index' }">
-        <span class="align-middle">VinAuto</span>
+        <span class="align-middle">Читалка</span>
       </router-link>
       <ul class="sidebar-nav">
         <li class="sidebar-header">Разделы</li>
@@ -44,8 +44,8 @@ import { useStore } from '@/stores/index'
 import { useRoute } from 'vue-router'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faClipboard, faRightFromBracket, faBook } from '@fortawesome/free-solid-svg-icons'
-library.add(faHome, faClipboard, faRightFromBracket, faBook)
+import { faHome, faClipboard, faRightFromBracket, faBook, faStar } from '@fortawesome/free-solid-svg-icons'
+library.add(faHome, faClipboard, faRightFromBracket, faBook, faStar)
 
 export default defineComponent({
   name: 'NavbarComponentLayout',
@@ -70,8 +70,8 @@ export default defineComponent({
         exact: true,
       },
       {
-        title: 'Пример',
-        name_url: 'example-index',
+        title: 'Книжный шкаф',
+        name_url: 'bookshelf-index',
         icon: 'book',
       },
     ]
