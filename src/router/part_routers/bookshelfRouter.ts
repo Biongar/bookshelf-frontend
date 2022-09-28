@@ -31,6 +31,20 @@ export default [
         },
         component: () => import('@/views/bookshelf/BookshelfDetailView.vue'),
       },
+      {
+        path: 'book/create',
+        name: 'bookshelf-create',
+        meta: {
+          layout: 'content',
+          requiresAuth: true,
+          breadcrumb: [
+            { name: 'Главная', link: 'index' },
+            { name: 'Книжный шкаф', link: 'bookshelf-index' },
+            { name: 'Создание рецензии' },
+          ],
+        },
+        component: () => import('@/views/bookshelf/BookshelfCreateView.vue'),
+      },
     ],
   },
 ]
