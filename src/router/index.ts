@@ -54,7 +54,7 @@ const router = createRouter({
         requiresAuth: false,
         breadcrumb: [{ name: 'Страница 404' }],
       },
-      component: { template: '<div>404</div>' },
+      component: () => import('@/components/HTTP404NOTFOUND.vue'),
     },
   ],
   scrollBehavior(to, from, savedPosition) {

@@ -21,27 +21,27 @@
                     <form @submit.prevent="submit">
                       <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
                       <div class="mb-3 form-floating">
-                        <input v-model="data.username" type="text" class="form-control" />
+                        <input v-model="data.username" required type="text" class="form-control" />
                         <label for="floatingInput">Никнейм</label>
                       </div>
                       <div class="mb-3 form-floating">
-                        <input v-model="data.first_name" type="text" class="form-control" />
+                        <input v-model="data.first_name" required type="text" class="form-control" />
                         <label for="floatingInput">Имя</label>
                       </div>
                       <div class="mb-3 form-floating">
-                        <input v-model="data.last_name" type="text" class="form-control" />
+                        <input v-model="data.last_name" required type="text" class="form-control" />
                         <label for="floatingInput">Фамилия</label>
                       </div>
                       <div class="mb-3 form-floating">
-                        <input v-model="data.email" type="email" class="form-control" />
+                        <input v-model="data.email" required type="email" class="form-control" />
                         <label for="floatingInput">Email</label>
                       </div>
                       <div class="mb-3 form-floating">
-                        <input v-model="data.password" type="password" class="form-control" />
+                        <input v-model="data.password" required type="password" class="form-control" />
                         <label for="floatingPassword">Пароль</label>
                       </div>
                       <div class="mb-3 form-floating">
-                        <input v-model="data.re_password" type="password" class="form-control" />
+                        <input v-model="data.re_password" required type="password" class="form-control" />
                         <label for="floatingPassword">Повтор пароля</label>
                       </div>
                       <div class="mb-3">

@@ -1,6 +1,6 @@
 <template>
   <div class="m-5 create-button" @click="$router.push({ name: 'bookshelf-create' })">
-    <font-awesome-icon class="fa-4x" :icon="['fas', 'plus']" />
+    <font-awesome-icon class="fa-4x" :icon="['fas', 'book']" />
   </div>
 </template>
 <script setup lang="ts"></script>
@@ -11,12 +11,10 @@
   bottom: 0;
   right: 0;
   color: teal;
-  border: 3px solid teal;
-  border-radius: 50%;
   transition: 0.3s;
 }
 
 .create-button:hover {
-  background-color: white;
+  color: rgb(0, 61, 61);
 }
 </style>

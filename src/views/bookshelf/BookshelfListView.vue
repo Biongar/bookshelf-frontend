@@ -1,5 +1,6 @@
 <template>
   <div class="row">
+    <h1>Мои рецензии</h1>
     <div v-for="book in bookList" :key="book.id" class="col-sm-6 col-md-3">
       <div class="card" @click="$router.push({ name: 'bookshelf-detail', params: { id: book.id } })">
         <img :src="book.photo" class="card-img-top" style="height: 380px" alt="..." />
@@ -13,6 +14,13 @@
               </div>
             </div>
           </h6>
+        </div>
+      </div>
+    </div>
+    <div v-if="listLoading">
+      <div class="text-center" colspan="6">
+        <div class="spinner-border" style="width: 1.3rem; height: 1.3rem" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
       </div>
     </div>
@@ -30,6 +38,8 @@ import { ref, onMounted } from 'vue'
 import http from '@/http-common'
 import CreateBookButton from '@/views/bookshelf/components/CreateBookButton.vue'
 import type { IBook } from '@/types/bookshelf/IBook'
+
+const listLoading = ref<boolean>(false)
 
 const pagination = {
   page: 1,
@@ -52,14 +62,17 @@ function changePage(direction: number) {
 
 function getBooks(page_size: number, page_num: number) {
   const apiPath = `bookshelf/books/?user_created=${currentUserId}&page_size=${page_size}&page_num=${page_num}`
+  listLoading.value = true
   http
     .get(apiPath)
     .then((response) => {
       bookList.value = response.data.results
       pagination.nextPage = response.data.next
       pagination.previousPage = response.data.previous
+      listLoading.value = false
     })
     .catch((error) => {
+      listLoading.value = false
       alert(error)
     })
 }

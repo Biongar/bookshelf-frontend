@@ -47,7 +47,7 @@
           <div class="row text-muted">
             <div class="col-6 text-start">
               <p class="mb-0">
-                <a class="text-muted" href="#" target="_blank"><strong>AdminKit</strong></a>
+                <router-link :to="{ name: 'index' }" class="text-muted"><strong>Читалка</strong></router-link>
                 &copy;
               </p>
             </div>

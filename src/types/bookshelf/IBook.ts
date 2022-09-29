@@ -6,8 +6,8 @@ export interface IBook {
   title: string
   description: string
   author: string
-  photo: string
-  rating: number
+  photo?: string
+  rating: number | string
   is_read: boolean
   date_created?: Date | string
   date_updated?: Date | string

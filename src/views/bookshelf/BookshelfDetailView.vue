@@ -27,7 +27,7 @@
           </tr>
           <tr>
             <td>Рецензию создал(а):</td>
-            <td class="text-end">{{ book.user_created.email }}</td>
+            <td class="text-end">{{ book.user_created.username }}</td>
           </tr>
           <tr>
             <td>Дата создания рецензии:</td>
@@ -36,6 +36,15 @@
           <tr>
             <td>Дата обновления рецензии:</td>
             <td class="text-end">{{ DateFunc.getDateRus(book.date_updated) }}</td>
+          </tr>
+          <tr v-if="book.user_created.id === currentUser.id">
+            <td>Действия:</td>
+            <td class="text-end">
+              <div class="btn-group">
+                <button class="btn btn-success" @click="updateBook">Изменить</button>
+                <button class="btn btn-danger" @click="deleteBook">Удалить</button>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -48,12 +57,15 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import http from '@/http-common'
 import type { IBook } from '@/types/bookshelf/IBook'
 import DateFunc from '@/utils/DateFunc'
 
+const router = useRouter()
 const route = useRoute()
+
+const currentUser = JSON.parse(localStorage.getItem('thisUser')).userdata
 
 const book = ref<IBook>({
   id: 0,
@@ -84,6 +96,24 @@ function getBook() {
     .catch((error) => {
       alert(error)
     })
+}
+
+function deleteBook() {
+  if (confirm('Вы уверены что хотите удалить книгу? Это действие невозможно будет отменить.')) {
+    const apiPath = `bookshelf/books/${book.value.id}`
+    http
+      .delete(apiPath)
+      .then(() => {
+        router.push({ name: 'bookshelf-index' })
+      })
+      .catch((error) => {
+        alert(error)
+      })
+  }
+}
+
+function updateBook() {
+  router.push({ name: 'bookshelf-update', params: { id: book.value.id } })
 }
 
 onMounted(() => {
