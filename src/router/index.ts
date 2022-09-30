@@ -30,6 +30,16 @@ const router = createRouter({
       },
       component: () => import('@/views/Register.vue'),
     },
+    {
+      path: '/confirm-email',
+      name: 'confirm-email',
+      meta: {
+        layout: 'blank',
+        requiresAuth: false,
+        breadcrumb: [{ name: 'Подтверждение email' }],
+      },
+      component: () => import('@/views/PostRegistrationAlert.vue'),
+    },
 
     // Страницы вэб сервиса
     {

@@ -82,7 +82,7 @@ export default defineComponent({
     const router = useRouter()
     const submit = async () => {
       http.post('account/users/', data)
-      await router.push('/login') // Редирект
+      await router.push({ name: 'confirm-email' }) // Редирект
     }
     return {
       data,
