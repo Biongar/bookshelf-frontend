@@ -1,6 +1,6 @@
 {
-  "name": "vinauto96.ru",
-  "version": "0.1.0",
+  "name": "book.ru",
+  "version": "1.0.0",
   "scripts": {
     "postinstall": "tsc volarPlugins/prettier-html.ts --skipLibCheck",
     "dev": "vite",
