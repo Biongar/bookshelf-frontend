@@ -3,5 +3,5 @@
     <h1>404 СТРАНИЦА НЕ НАЙДЕНА</h1>
   </div>
 </template>
-<script></script>
+<script setup lang="ts"></script>
 <style scoped></style>
